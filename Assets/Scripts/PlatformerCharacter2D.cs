@@ -69,7 +69,6 @@ public class PlatformerCharacter2D : MonoBehaviour
     [HideInInspector] public bool isGrounded;            // Whether or not the player is grounded.
     [HideInInspector] public bool isWalled = false;      // If the player is touching a wall
     [HideInInspector] public bool isSliding = false;     // If the player is sliding down a wall
-    [HideInInspector] public bool isRiding = false;      // If the player is riding something that they can jump from
 
     private void Awake()
     {
@@ -116,7 +115,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (isRiding || colliders[i].gameObject != gameObject)
+            if (colliders[i].gameObject != gameObject)
             {
                 // Debug.Log("Ground found: " + colliders[i].name);
                 isGrounded = true;
@@ -198,12 +197,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 
     public void Move(float move)
     {
-        if (isRiding)
-        {
-            anim.SetFloat("Speed", 0f);
-        }
         // Only control the player if grounded or airControl is turned on
-        else if (Globals.canControl && (isGrounded || airControl || isSliding) && !isSwinging)
+        if (Globals.canControl && (isGrounded || airControl || isSliding) && !isSwinging)
         {
             // The Speed animator parameter is set to the absolute value of the horizontal input.
             anim.SetFloat("Speed", Mathf.Abs(move));
@@ -254,7 +249,7 @@ public class PlatformerCharacter2D : MonoBehaviour
                     }
                 }
             }
-            else if (hasGlider && !isGrounded && !isSliding && !isRiding)
+            else if (hasGlider && !isGrounded && !isSliding)
             {
                 isGliding = true;
                 // Prevent gliding upwards
@@ -273,20 +268,6 @@ public class PlatformerCharacter2D : MonoBehaviour
         curJumpForce = jumpForce * (isWallJumping ? wallJumpMult : 1);
         anim.SetBool("Ground", false);
         jumpTimeCounter = 0;
-
-        // If jumping from riding, preserve momentum and reset parent
-        if (isRiding)
-        {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            float speed = transform.parent.GetComponent<Minecart>().speed * 5f;
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.velocity = new Vector2(speed * transform.parent.right.x, rb.velocity.y);
-            curJumpForce += speed * Mathf.Max(transform.parent.right.y, 0f);
-            transform.rotation = Quaternion.identity;
-            isRiding = false;
-            StartCoroutine(transform.parent.GetComponent<Minecart>().Dismount());
-            transform.SetParent(null);
-        }
     }
 
     private void JumpCancel()
