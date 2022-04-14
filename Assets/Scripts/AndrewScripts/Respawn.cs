@@ -42,8 +42,6 @@ public class Respawn : MonoBehaviour
             {
                 isGravity = true;
                 script.controls.Disable();
-                player.GetComponent<RopeSystem>().ResetRope();
-                player.GetComponent<RopeSystem>().enabled = false;
             }
             // Freeze Player if hit a spike (tag = lethal_freeze)
             // gameObject.GetComponent<BoxCollider2D>().enabled = false;
