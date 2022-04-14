@@ -1400,34 +1400,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundedSkreech
       objectReference: {fileID: 0}
-    - target: {fileID: 1385657709625624671, guid: c7a9b0614aa391b4ca7ea83be1156975,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494246182633238561, guid: c7a9b0614aa391b4ca7ea83be1156975,
-        type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494246182633238561, guid: c7a9b0614aa391b4ca7ea83be1156975,
-        type: 3}
-      propertyPath: ropeHingeAnchor
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4869602587227291774, guid: c7a9b0614aa391b4ca7ea83be1156975,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6067263724942069591, guid: c7a9b0614aa391b4ca7ea83be1156975,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -2
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2227730904939628668, guid: c7a9b0614aa391b4ca7ea83be1156975, type: 3}
-    - {fileID: 6695719550044836438, guid: c7a9b0614aa391b4ca7ea83be1156975, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a9b0614aa391b4ca7ea83be1156975, type: 3}
 --- !u!1 &762736423
 GameObject:

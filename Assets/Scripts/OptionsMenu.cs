@@ -24,7 +24,7 @@ public class OptionsMenu : MonoBehaviour
         PlatformerCharacter2D platformerControls = FindObjectOfType<PlatformerCharacter2D>();
         if (platformerControls != null)
         {
-            platformerControls.controls.Gravity.Disable();
+            platformerControls.controls.Gameplay.Disable();
         }
     }
 

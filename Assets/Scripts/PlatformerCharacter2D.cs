@@ -84,25 +84,25 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         controls = new PlayerControls();
 
-        controls.Gravity.Move.performed += ctx => move = ctx.ReadValue<float>();
-        controls.Gravity.Move.canceled += ctx => move = 0f;
+        controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<float>();
+        controls.Gameplay.Move.canceled += ctx => move = 0f;
 
         // controls.Gravity.Beam2.performed += ctx => beamDir2 = ctx.ReadValue<Vector2>();
         // controls.Gravity.Beam2.canceled += ctx => beamDir2 = Vector2.zero;
 
-        controls.Gravity.Jump.started += ctx => Jump();
-        controls.Gravity.Jump.canceled += ctx => JumpCancel();
+        controls.Gameplay.Jump.started += ctx => Jump();
+        controls.Gameplay.Jump.canceled += ctx => JumpCancel();
 
         controls.Gameplay.Pause.started += ctx => Pause();
     }
 
     private void OnEnable()
     {
-        controls.Gravity.Enable();
+        controls.Gameplay.Enable();
     }
     private void OnDisable()
     {
-        controls.Gravity.Disable();
+        controls.Gameplay.Disable();
     }
 
     private void FixedUpdate()
@@ -292,7 +292,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         if (!paused) {
             pauseMenu.SetActive(true);
-            controls.Gravity.Disable();
+            controls.Gameplay.Disable();
         }
         else {
             FindObjectOfType<ButtonListeners>().GetComponent<ButtonListeners>().OnClickResume();
