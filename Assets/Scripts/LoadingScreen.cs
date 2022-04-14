@@ -11,7 +11,6 @@ public class LoadingScreen : MonoBehaviour
     
     private SpriteRenderer sprite;
     private PlatformerCharacter2D player;
-    private BeamScript ZeroGPlayer;
     private PlayerControls controls;
 
     // Start is called before the first frame update
@@ -23,11 +22,6 @@ public class LoadingScreen : MonoBehaviour
         if (player != null)
         {
             controls = player.controls;
-        }
-        else
-        {
-            ZeroGPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<BeamScript>();
-            controls = ZeroGPlayer.controls;
         }
 
         if (startOpaque)

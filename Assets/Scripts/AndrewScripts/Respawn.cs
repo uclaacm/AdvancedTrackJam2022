@@ -38,12 +38,7 @@ public class Respawn : MonoBehaviour
         if (collision.tag == "Player")
         {
             PlatformerCharacter2D script = player.GetComponent<PlatformerCharacter2D>();
-            if (script == null)
-            {
-                isGravity = false;
-                player.GetComponent<BeamScript>().controls.Disable();
-            }
-            else
+            if (script != null)
             {
                 isGravity = true;
                 script.controls.Disable();

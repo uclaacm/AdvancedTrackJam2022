@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class ButtonListeners : MonoBehaviour {
     private PlatformerCharacter2D player;
-    private BeamScript ZeroGPlayer;
     private PlayerControls controls;
 
     public void Awake() {
@@ -17,10 +16,6 @@ public class ButtonListeners : MonoBehaviour {
 
         if (player != null) {
             controls = player.controls;
-        }
-        else {
-            BeamScript ZeroGPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<BeamScript>();
-            controls = ZeroGPlayer.controls;
         }
 
 
