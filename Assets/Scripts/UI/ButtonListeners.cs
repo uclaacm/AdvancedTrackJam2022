@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class ButtonListeners : MonoBehaviour {
     private PlatformerCharacter2D player;
-    private PlayerControls controls;
+    private Controls controls;
 
     public void Awake() {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlatformerCharacter2D>();

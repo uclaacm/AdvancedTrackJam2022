@@ -11,7 +11,7 @@ public class LoadingScreen : MonoBehaviour
     
     private SpriteRenderer sprite;
     private PlatformerCharacter2D player;
-    private PlayerControls controls;
+    private Controls controls;
 
     // Start is called before the first frame update
     void Start()

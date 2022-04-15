@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 586366251230067421}
   - component: {fileID: 7463734154516516988}
   - component: {fileID: 7463734154516516966}
-  - component: {fileID: 1125326254}
   - component: {fileID: 1385657709625624671}
   - component: {fileID: 2168833926630281823}
   - component: {fileID: 626234064339326561}
@@ -190,23 +189,9 @@ MonoBehaviour:
   jumpDamper: 0
   parachuteMult: 0.1
   hasGlider: 1
-  isSwinging: 0
-  ropeHook: {x: 0, y: 0}
   isGrounded: 0
   isWalled: 0
   isSliding: 0
---- !u!114 &1125326254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586366251230067416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1ec6d4c84215f943be562da78e48cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!199 &1385657709625624671
 ParticleSystemRenderer:
   serializedVersion: 6
