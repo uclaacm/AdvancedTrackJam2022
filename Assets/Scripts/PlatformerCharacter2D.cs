@@ -64,8 +64,6 @@ public class PlatformerCharacter2D : MonoBehaviour
     private bool isGliding = false;     // If the player is gliding with the parachute
     private float gravity;
 
-    public bool isSwinging = false;
-    [HideInInspector] public Vector2 ropeHook = Vector2.zero;
     [HideInInspector] public bool isGrounded;            // Whether or not the player is grounded.
     [HideInInspector] public bool isWalled = false;      // If the player is touching a wall
     [HideInInspector] public bool isSliding = false;     // If the player is sliding down a wall
@@ -155,7 +153,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
 
         // If the player continues jumping...
-        if (canJumpMore && (isJumping || jumpTimeCounter < minJumpTime) && !isSwinging) 
+        if (canJumpMore && (isJumping || jumpTimeCounter < minJumpTime)) 
         {
             if (jumpTimeCounter < maxJumpTime * (isSliding ? wallScrambleMult : 1f))
             {
@@ -182,23 +180,18 @@ public class PlatformerCharacter2D : MonoBehaviour
         anim.SetFloat("vSpeed", rb.velocity.y);
 
         // If currently facing right and (getting forced left or moving left into a wall)...
-        if(!isSwinging)
-        {
-            if (facingRight && (rb.velocity.x < -1.0f || 
-            (rb.velocity.x >= -0.001f && rb.velocity.x <= 0.001f && Globals.canControl && move < 0)))
-                Flip();
-            else if (!facingRight && (rb.velocity.x > 1.0f || 
-            (rb.velocity.x >= -0.001f && rb.velocity.x <= 0.001f && Globals.canControl && move > 0)))
-                Flip();
-        }
-
-        anim.SetBool("Swing", isSwinging);
+        if (facingRight && (rb.velocity.x < -1.0f || 
+        (rb.velocity.x >= -0.001f && rb.velocity.x <= 0.001f && Globals.canControl && move < 0)))
+            Flip();
+        else if (!facingRight && (rb.velocity.x > 1.0f || 
+        (rb.velocity.x >= -0.001f && rb.velocity.x <= 0.001f && Globals.canControl && move > 0)))
+            Flip();
     }
 
     public void Move(float move)
     {
         // Only control the player if grounded or airControl is turned on
-        if (Globals.canControl && (isGrounded || airControl || isSliding) && !isSwinging)
+        if (Globals.canControl && (isGrounded || airControl || isSliding))
         {
             // The Speed animator parameter is set to the absolute value of the horizontal input.
             anim.SetFloat("Speed", Mathf.Abs(move));
@@ -206,15 +199,6 @@ public class PlatformerCharacter2D : MonoBehaviour
             // Move the character
             if ((move > 0 && rb.velocity.x < maxSpeed) || (move < 0 && rb.velocity.x > -maxSpeed))
                 rb.AddForce(new Vector2(move * maxSpeed * 10, 0));
-        }
-        else if (isSwinging)
-        {
-            // The Speed animator parameter is set to the absolute value of the horizontal input.
-            // anim.SetFloat("Speed", Mathf.Abs(move));
-
-            // Move the character
-            if ((move > 0 && rb.velocity.x < maxSpeed ) || (move < 0 && rb.velocity.x > -maxSpeed))
-                rb.AddForce(move * Vector2.right * maxSpeed * 2, 0);
         }
     }
 
@@ -253,10 +237,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             {
                 isGliding = true;
                 // Prevent gliding upwards
-                if (!isSwinging)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, 0f));
-                }
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, 0f));
             }
         }
     }
