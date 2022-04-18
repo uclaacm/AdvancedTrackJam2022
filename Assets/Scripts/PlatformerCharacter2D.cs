@@ -84,12 +84,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         controls = new Controls();
 
-        // Read value (ranges from -1 to 1) from Move control
+        // Read value (ranges from -1 to 1) from Move Action
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<float>();
         controls.Gameplay.Move.canceled += ctx => move = 0f;
 
-        controls.Gameplay.Jump.started += ctx => Jump();
-        controls.Gameplay.Jump.canceled += ctx => JumpCancel();
+        // TODO: Set the start of a Jump Action to call Jump()
+            // ALSO, make sure to set up a Jump Action in Assets/Scripts/Controls.inputactions (don't forget to save it when you're done!)
+        // TODO: Set the cancelation of a Jump Action to call JumpCancel()
 
         controls.Gameplay.Pause.started += ctx => Pause();
     }

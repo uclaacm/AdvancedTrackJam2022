@@ -37,51 +37,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""WebShoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""1b8163bf-7f51-430e-be74-1406c48d8d93"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""WebAim"",
-                    ""type"": ""Value"",
-                    ""id"": ""7108773d-0e4b-4c5c-8daa-e00c724bad91"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""WebClimb"",
-                    ""type"": ""Value"",
-                    ""id"": ""56352519-110f-4cb9-9683-af25202fcd2c"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""WebCancel"",
-                    ""type"": ""Button"",
-                    ""id"": ""85569356-1b9c-4ce5-a442-879140eec298"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""0ed6aab5-a1a5-4ecd-8264-e197d75d389a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""3eb29b03-71b1-49a6-bf99-b466f3a8cd29"",
@@ -215,281 +170,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""438da936-4599-4a31-9f54-3967a6ea5649"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""75856bf0-8ec6-439b-a0e1-df31425167c0"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0e191f8b-9d2b-416d-a7c8-c3ccdc2e9896"",
-                    ""path"": ""<HID::HORI CO.,LTD. HORIPAD S>/button3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""538400f0-8308-40a4-bae0-db86c7ca20d0"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""aab53d30-7216-4201-bafa-a9f17eb170fe"",
-                    ""path"": ""<Gamepad>/rightStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9f122e95-034c-4673-9e46-827ac0bc4bf9"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""17901ae8-2315-4531-b048-ecac9239d8b5"",
-                    ""path"": ""<Gamepad>/rightStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""71c96333-a17e-4a11-b1e8-94e9cb1247e3"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ecd8afb8-3735-4d5f-8140-58d6e356536e"",
-                    ""path"": ""<Joystick>/stick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""33a20bd8-6df2-4f12-b192-b58a6e47ff89"",
-                    ""path"": ""<Joystick>/stick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f7f9a41d-4c71-4848-98be-0d3e032d71c6"",
-                    ""path"": ""<Joystick>/stick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a10e2a47-c8de-4595-935c-38cccfada691"",
-                    ""path"": ""<Joystick>/stick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""93d448f1-6657-4737-9c5e-5b1d9ff0ff1c"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebCancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""571a5ed5-605b-4579-81f9-c2ddc49f5b90"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebCancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""83718503-cbe7-4686-b7ca-e2165d4b526d"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebCancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""505930b0-41be-4585-810a-dff80df87c92"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebCancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e996e1c2-2f3d-4dd7-980b-6040f08e0de7"",
-                    ""path"": ""<HID::HORI CO.,LTD. HORIPAD S>/button3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebCancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""b6383830-b1b9-4a3a-82a3-2ac9a04ed633"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebClimb"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""b850a258-be94-4928-bedd-b6bb68e27f7c"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebClimb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""755c20ea-f488-4955-84d7-63e20224d483"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebClimb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ea284345-1dec-4e3f-90bf-99d4a5720ea3"",
-                    ""path"": ""<Gamepad>/leftStick/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebClimb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""987312fd-bab6-4175-8c9b-42f2e0da0e5d"",
-                    ""path"": ""<Gamepad>/dpad/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebClimb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2ce976fb-0124-47c2-9396-50be357d17ec"",
-                    ""path"": ""<HID::HORI CO.,LTD. HORIPAD S>/hat/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebClimb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1d66338b-2ec0-4185-bf76-a6734cde38bd"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebAim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""771e958a-d990-4d6b-9e52-b1ad270c4daa"",
-                    ""path"": ""<Joystick>/stick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WebAim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0383370a-cf27-487b-bf1f-a4e177c734df"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -529,11 +209,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_WebShoot = m_Gameplay.FindAction("WebShoot", throwIfNotFound: true);
-        m_Gameplay_WebAim = m_Gameplay.FindAction("WebAim", throwIfNotFound: true);
-        m_Gameplay_WebClimb = m_Gameplay.FindAction("WebClimb", throwIfNotFound: true);
-        m_Gameplay_WebCancel = m_Gameplay.FindAction("WebCancel", throwIfNotFound: true);
-        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
     }
 
@@ -595,22 +270,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_WebShoot;
-    private readonly InputAction m_Gameplay_WebAim;
-    private readonly InputAction m_Gameplay_WebClimb;
-    private readonly InputAction m_Gameplay_WebCancel;
-    private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Pause;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
         public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @WebShoot => m_Wrapper.m_Gameplay_WebShoot;
-        public InputAction @WebAim => m_Wrapper.m_Gameplay_WebAim;
-        public InputAction @WebClimb => m_Wrapper.m_Gameplay_WebClimb;
-        public InputAction @WebCancel => m_Wrapper.m_Gameplay_WebCancel;
-        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -624,21 +289,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @WebShoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebShoot;
-                @WebShoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebShoot;
-                @WebShoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebShoot;
-                @WebAim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebAim;
-                @WebAim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebAim;
-                @WebAim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebAim;
-                @WebClimb.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebClimb;
-                @WebClimb.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebClimb;
-                @WebClimb.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebClimb;
-                @WebCancel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebCancel;
-                @WebCancel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebCancel;
-                @WebCancel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWebCancel;
-                @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
@@ -649,21 +299,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @WebShoot.started += instance.OnWebShoot;
-                @WebShoot.performed += instance.OnWebShoot;
-                @WebShoot.canceled += instance.OnWebShoot;
-                @WebAim.started += instance.OnWebAim;
-                @WebAim.performed += instance.OnWebAim;
-                @WebAim.canceled += instance.OnWebAim;
-                @WebClimb.started += instance.OnWebClimb;
-                @WebClimb.performed += instance.OnWebClimb;
-                @WebClimb.canceled += instance.OnWebClimb;
-                @WebCancel.started += instance.OnWebCancel;
-                @WebCancel.performed += instance.OnWebCancel;
-                @WebCancel.canceled += instance.OnWebCancel;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
@@ -674,11 +309,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnWebShoot(InputAction.CallbackContext context);
-        void OnWebAim(InputAction.CallbackContext context);
-        void OnWebClimb(InputAction.CallbackContext context);
-        void OnWebCancel(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }
 }
