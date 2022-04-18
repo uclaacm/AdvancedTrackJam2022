@@ -20,10 +20,10 @@ public class LevelGoal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // If the collider's tag is "Player", start the coroutine that loads the next level
-        if(other.tag == "Player")
+        // TODO: If the collider's tag is "Player", start the coroutine that loads the next level
+        if(false)
         {
-            StartCoroutine(NextLevel());
+            
             FindObjectOfType<Camera>().transform.GetChild(0).GetComponent<LoadingScreen>().FadeIn();
         }
     }
@@ -32,13 +32,12 @@ public class LevelGoal : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        // Set the "currentLevel" PlayerPref to nextLevelNumber
-        PlayerPrefs.SetInt("currentLevel", nextLevelNumber);
+        // TODO: Set the "currentLevel" PlayerPref to nextLevelNumber (It HAS to be named "currentLevel" for LevelSelect to recognize it)
         
-        // If the next level hasn't been reached before (ie. the "latestLevel" PlayerPref < nextLevelNumber), update the latestLevel int
-        if (nextLevelNumber > PlayerPrefs.GetInt("latestLevel", 0))
+        // TODO: If the next level hasn't been reached before (ie. the "latestLevel" PlayerPref < nextLevelNumber), update the latestLevel int
+        if (false)
         {
-            PlayerPrefs.SetInt("latestLevel", nextLevelNumber);
+            
         }
 
         // Load the next level using nextLevelNumber + 3 (to offset the title screen, main menu, and level select scenes)
