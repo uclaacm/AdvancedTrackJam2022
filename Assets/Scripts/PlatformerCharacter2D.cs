@@ -123,18 +123,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             }
         }
 
-        // The player should slide on a wall if a circlecast to the wallcheck position hits anything designated as ground
-        Collider2D[] wallColliders = Physics2D.OverlapCircleAll(wallCheck.position, groundedRadius, whatIsGround);
-        for (int i = 0; i < wallColliders.Length; i++)
-        {
-            if (wallColliders[i].gameObject != gameObject)
-            {
-                // Debug.Log("Wall found: " + colliders[i].name);
-                isWalled = true;
-                isGliding = false;
-                break;
-            }
-        }
+        // TODO: The player should slide on a wall if a circlecast to the wallcheck position hits anything designated as ground
 
         anim.SetBool("Ground", isGrounded);
         anim.SetBool("Glide", isGliding);
@@ -235,8 +224,7 @@ public class PlatformerCharacter2D : MonoBehaviour
                 isWallJumping = true;
                 anim.SetBool("Walled", false);
 
-                // Add horizontal force from kicking off a wall
-                rb.AddForce(new Vector2(maxSpeed * (facingRight ? -wallJumpXForce : wallJumpXForce), 0));
+                // TODO: Add horizontal force (maxSpeed * wallJumpXForce) from kicking off a wall
 
                 // Restrict walljumping from a singular wall (comment this block of code out to enable single-wall climbing)
                 if(airControl)
