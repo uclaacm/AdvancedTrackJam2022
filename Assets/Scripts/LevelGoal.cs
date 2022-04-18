@@ -41,7 +41,7 @@ public class LevelGoal : MonoBehaviour
             PlayerPrefs.SetInt("latestLevel", nextLevelNumber);
         }
 
-        // Load the next level using nextLevelNumber
-        SceneManager.LoadScene(nextLevelNumber, LoadSceneMode.Single);
+        // Load the next level using nextLevelNumber + 3 (to offset the title screen, main menu, and level select scenes)
+        SceneManager.LoadScene(nextLevelNumber + 3, LoadSceneMode.Single);
     }
 }

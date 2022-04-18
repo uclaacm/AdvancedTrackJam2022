@@ -12,7 +12,7 @@ public class LevelSelect : MonoBehaviour {
 
     // Start is called before the first frame update
     private void Start() {
-        latestLevel = PlayerPrefs.GetInt("latestLevel", 3) - 2;
+        latestLevel = PlayerPrefs.GetInt("latestLevel", 0) + 1;
         // Debug.Log(latestLevel);
 
         levelScrollPane = transform.Find("Scroll View").Find("Viewport").Find("Content");
