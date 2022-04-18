@@ -12,41 +12,29 @@ public class ButtonListeners : MonoBehaviour {
     private Controls controls;
 
     public void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlatformerCharacter2D>();
-
-        if (player != null) {
-            controls = player.controls;
-        }
-
-
-        if (gameObject.name == "VolumeSlider") {
+        if (gameObject.name == "VolumeSlider") 
+        {
             gameObject.GetComponent<Slider>().value = AudioListener.volume * 100;
         }
-        else if (gameObject.name == "QualitySlider") {
+        else if (gameObject.name == "QualitySlider") 
+        {
             gameObject.GetComponent<Slider>().value = QualitySettings.GetQualityLevel();
         }
-    }
 
-    public void OnClickNewGame() {
-        PlayerPrefs.DeleteAll();
+        GameObject playGO = GameObject.FindGameObjectWithTag("Player");
+        if (!playGO)
+        {
+            return;
+        }
 
-        OnClickLoadGame();
-    }
-
-    public void OnClickLoadGame() {
-        SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
+        player = playGO.GetComponent<PlatformerCharacter2D>();
+        if (player != null) 
+        {
+            controls = player.controls;
+        }
     }
 
     public void LoadLevel(int level) {
-        // switch (level) {
-        //     case 0:
-        //         SceneManager.LoadScene(2, LoadSceneMode.Single);
-        //         break;
-
-        //     default:
-        //         Debug.Log("Level " + level + " not yet added!");
-        //         break;
-        // }
         SceneManager.LoadScene(level + 3, LoadSceneMode.Single);
     }
 
@@ -61,7 +49,6 @@ public class ButtonListeners : MonoBehaviour {
 
     public void OnClickRestart() {
         controls.Disable();
-        Globals.Reset();
         Time.timeScale = 1f;
         GameObject.FindObjectOfType<CanvasGroup>().transform.GetChild(0).gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -77,7 +64,6 @@ public class ButtonListeners : MonoBehaviour {
     }
 
     public void OnClickQuit() {
-        Globals.Reset();
         Time.timeScale = 1f;
 
         controls.Disable();
@@ -86,7 +72,7 @@ public class ButtonListeners : MonoBehaviour {
     }
 
     public void OnClickQuitGame() {
-        Application.Quit();   // Or a "Do you really wanna quit?" dialog maybe
+        Application.Quit();
     }
 
     /// <summary>

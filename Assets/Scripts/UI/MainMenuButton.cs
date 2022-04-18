@@ -50,13 +50,11 @@ public class MainMenuButton : MonoBehaviour {
     }
 
     public void QuitToMain() {
-        Globals.Reset();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void OnClickQuitToTitle() {
-        Globals.Reset();
         Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScreen", LoadSceneMode.Single);
     }

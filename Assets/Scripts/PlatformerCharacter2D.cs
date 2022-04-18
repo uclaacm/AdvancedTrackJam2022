@@ -44,7 +44,9 @@ public class PlatformerCharacter2D : MonoBehaviour
     public bool hasGlider = true;
 
     [HideInInspector] public Controls controls;
-    
+
+    public static bool canControl = true;       // If the player character can be controlled
+
     private float move = 0f;            // The value of horizontal movement (from -1 to 1)
     private Transform groundCheck;      // A position marking where to check if the player is grounded.
     const float groundedRadius = .5f;   // Radius of the overlap circle to determine if grounded
@@ -82,11 +84,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         controls = new Controls();
 
+        // Read value (ranges from -1 to 1) from Move control
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<float>();
         controls.Gameplay.Move.canceled += ctx => move = 0f;
-
-        // controls.Gravity.Beam2.performed += ctx => beamDir2 = ctx.ReadValue<Vector2>();
-        // controls.Gravity.Beam2.canceled += ctx => beamDir2 = Vector2.zero;
 
         controls.Gameplay.Jump.started += ctx => Jump();
         controls.Gameplay.Jump.canceled += ctx => JumpCancel();
@@ -94,6 +94,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         controls.Gameplay.Pause.started += ctx => Pause();
     }
 
+    // This is needed because inputs are disabled by default
     private void OnEnable()
     {
         controls.Gameplay.Enable();
@@ -109,7 +110,6 @@ public class PlatformerCharacter2D : MonoBehaviour
         isWalled = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -122,8 +122,8 @@ public class PlatformerCharacter2D : MonoBehaviour
                 break;
             }
         }
-        anim.SetBool("Ground", isGrounded);
 
+        // The player should slide on a wall if a circlecast to the wallcheck position hits anything designated as ground
         Collider2D[] wallColliders = Physics2D.OverlapCircleAll(wallCheck.position, groundedRadius, whatIsGround);
         for (int i = 0; i < wallColliders.Length; i++)
         {
@@ -135,24 +135,31 @@ public class PlatformerCharacter2D : MonoBehaviour
                 break;
             }
         }
+
+        anim.SetBool("Ground", isGrounded);
         anim.SetBool("Glide", isGliding);
 
         // If the player should be sliding down a wall...
-        if (isWalled && !isGrounded /*&& move != 0*/ && ((facingRight && canWJRight) || (!facingRight && canWJLeft)))
+        if (isWalled && !isGrounded && ((facingRight && canWJRight) || (!facingRight && canWJLeft)))
         {
             isSliding = true;
         }    
         else
+        {
             isSliding = false;
+        }
         anim.SetBool("Walled", isSliding);
 
         Move(move);
 
-        // If the player is sliding down a wall...
+        // If the player is sliding down a wall, clamp vertical velocity
         if (isSliding)
+        {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
+        }
 
-        // If the player continues jumping...
+        // If the player continues jumping, dampen (decrease) upward velocity over time
+        // Jumps will continue for at least minJumpTime seconds no matter how long the player presses the jump button
         if (canJumpMore && (isJumping || jumpTimeCounter < minJumpTime)) 
         {
             if (jumpTimeCounter < maxJumpTime * (isSliding ? wallScrambleMult : 1f))
@@ -161,64 +168,77 @@ public class PlatformerCharacter2D : MonoBehaviour
                 jumpTimeCounter += Time.deltaTime;
                 curJumpForce -= jumpDamper;
             }
-            else 
+            else
+            {
                 isJumping = isWallJumping = false;
+            }
         }
-        else 
+        else
+        {
             canJumpMore = isJumping = isWallJumping = false;
+        }
 
-        // If the plyer is gliding...
+        // If the player is gliding, constrain downward velocity and lower gravity
         if (isGliding)
         {
             rb.gravityScale = gravity * parachuteMult;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -10));
         }
         else
+        {
             rb.gravityScale = gravity;
+        }
 
         // Set the vertical animation
         anim.SetFloat("vSpeed", rb.velocity.y);
 
-        // If currently facing right and (getting forced left or moving left into a wall)...
+        // If currently facing right and (getting forced left or moving left into a wall), flip sprite horizontally
         if (facingRight && (rb.velocity.x < -1.0f || 
-        (rb.velocity.x >= -0.001f && rb.velocity.x <= 0.001f && Globals.canControl && move < 0)))
+        (Mathf.Abs(rb.velocity.x) <= float.Epsilon && canControl && move < -float.Epsilon)))
             Flip();
         else if (!facingRight && (rb.velocity.x > 1.0f || 
-        (rb.velocity.x >= -0.001f && rb.velocity.x <= 0.001f && Globals.canControl && move > 0)))
+        (Mathf.Abs(rb.velocity.x) <= float.Epsilon && canControl && move > float.Epsilon)))
             Flip();
     }
 
     public void Move(float move)
     {
         // Only control the player if grounded or airControl is turned on
-        if (Globals.canControl && (isGrounded || airControl || isSliding))
+        if (canControl && (isGrounded || airControl || isSliding))
         {
             // The Speed animator parameter is set to the absolute value of the horizontal input.
             anim.SetFloat("Speed", Mathf.Abs(move));
 
-            // Move the character
+            // Move the character if speed doesn't exceed maxSpeed, but allow for turning around
             if ((move > 0 && rb.velocity.x < maxSpeed) || (move < 0 && rb.velocity.x > -maxSpeed))
-                rb.AddForce(new Vector2(move * maxSpeed * 10, 0));
+            {
+                rb.AddForce(new Vector2(move * maxSpeed * 10f, 0));
+            }
         }
     }
 
     public void Jump()
     {
-        if (Globals.canControl)
+        if (canControl)
         {
-            // If the player should jump...
+            // If the player jumps from the ground...
             if (isGrounded && anim.GetBool("Ground"))
             {
                 JumpHelper();
             }
-            // If the player is jumping from a wall...
+            // If the player jumps from a wall...
             else if (isSliding && anim.GetBool("Walled"))
             {
                 JumpHelper();
+
                 isSliding = false;
                 isWallJumping = true;
                 anim.SetBool("Walled", false);
+
+                // Add horizontal force from kicking off a wall
                 rb.AddForce(new Vector2(maxSpeed * (facingRight ? -wallJumpXForce : wallJumpXForce), 0));
+
+                // Restrict walljumping from a singular wall (comment this block of code out to enable single-wall climbing)
                 if(airControl)
                 {
                     if (facingRight)
@@ -233,9 +253,11 @@ public class PlatformerCharacter2D : MonoBehaviour
                     }
                 }
             }
+            // If the player attempts to glide...
             else if (hasGlider && !isGrounded && !isSliding)
             {
                 isGliding = true;
+
                 // Prevent gliding upwards
                 rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, 0f));
             }
@@ -245,10 +267,11 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
         isJumping = canJumpMore = true;
         isGrounded = false;
+        anim.SetBool("Ground", false);
+        jumpTimeCounter = 0f;
+
         // Add a vertical force to the player.
         curJumpForce = jumpForce * (isWallJumping ? wallJumpMult : 1);
-        anim.SetBool("Ground", false);
-        jumpTimeCounter = 0;
     }
 
     private void JumpCancel()
@@ -260,22 +283,23 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
         // Switch the way the player is labelled as facing.
         facingRight = !facingRight;
-        // Rotate by 180 degrees
+        // Rotate on the y-axis by 180 degrees
         transform.Rotate(new Vector3(0,180,0));
     }
 
-    public void Pause() {
+    public void Pause() 
+    {
         GameObject pauseMenu = FindObjectOfType<CanvasGroup>().transform.GetChild(0).gameObject;
         GameObject optionsMenu = FindObjectOfType<CanvasGroup>().transform.GetChild(1).gameObject;
         bool paused = pauseMenu.activeSelf || optionsMenu.activeSelf;
 
-        // Debug.Log(pauseMenu);
-
-        if (!paused) {
+        if (!paused) 
+        {
             pauseMenu.SetActive(true);
             controls.Gameplay.Disable();
         }
-        else {
+        else 
+        {
             FindObjectOfType<ButtonListeners>().GetComponent<ButtonListeners>().OnClickResume();
         }
 

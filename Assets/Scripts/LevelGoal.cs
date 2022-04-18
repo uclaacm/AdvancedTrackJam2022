@@ -9,6 +9,7 @@ public class LevelGoal : MonoBehaviour
     [Tooltip("The build index of the next level's scene. These can be found/edited in Build Settings")]
     [SerializeField] private int nextLevelNumber;
 
+    // Visualize what the goalzone looks like in the Editor (make sure Gizmos are enabled in the Scene view!)
     void OnDrawGizmos()
     {
         GetComponent<BoxCollider2D>().offset = Vector2.zero;
@@ -19,6 +20,7 @@ public class LevelGoal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // If the collider's tag is "Player", start the coroutine that loads the next level
         if(other.tag == "Player")
         {
             StartCoroutine(NextLevel());
@@ -30,16 +32,16 @@ public class LevelGoal : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
+        // Set the "currentLevel" PlayerPref to nextLevelNumber
         PlayerPrefs.SetInt("currentLevel", nextLevelNumber);
         
-        // If the next level hasn't been reached before, update the latestLevel int
+        // If the next level hasn't been reached before (ie. the "latestLevel" PlayerPref < nextLevelNumber), update the latestLevel int
         if (nextLevelNumber > PlayerPrefs.GetInt("latestLevel", 0))
         {
             PlayerPrefs.SetInt("latestLevel", nextLevelNumber);
         }
-        
-        Globals.curCheckpoint = 0; // Reset checkpoint int so that you spawn at start of next level
 
+        // Load the next level using nextLevelNumber
         SceneManager.LoadScene(nextLevelNumber, LoadSceneMode.Single);
     }
 }

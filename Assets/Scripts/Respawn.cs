@@ -25,16 +25,16 @@ public class Respawn : MonoBehaviour
         ls = GameObject.FindGameObjectWithTag("MainCamera").transform.GetChild(0).GetComponent<LoadingScreen>();
     }
 
+    // Visualize what the deathzone looks like in the Editor (make sure Gizmos are enabled in the Scene view!)
     private void OnDrawGizmos()
     {
-        //GetComponent<BoxCollider2D>().offset = Vector2.zero;
-
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + (Vector3)GetComponent<BoxCollider2D>().offset, GetComponent<BoxCollider2D>().size * transform.localScale);    //Offset allowed
+        Gizmos.DrawWireCube(transform.position + (Vector3)GetComponent<BoxCollider2D>().offset, GetComponent<BoxCollider2D>().size * transform.localScale);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // If the collision's tag is "Player", disable its PlatformerCharacter2D component's controls and restart the level
         if (collision.tag == "Player")
         {
             PlatformerCharacter2D script = player.GetComponent<PlatformerCharacter2D>();
@@ -43,9 +43,8 @@ public class Respawn : MonoBehaviour
                 isGravity = true;
                 script.controls.Disable();
             }
-            // Freeze Player if hit a spike (tag = lethal_freeze)
-            // gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            // player.GetComponent<PlatformerCharacter2D>().enabled = false;
+
+            // Freeze Player if hit a spike (tag = "Lethal_Freeze")
             if (gameObject.tag == "Lethal_Freeze")
             {
                 cl.isTrigger = false;
@@ -53,23 +52,14 @@ public class Respawn : MonoBehaviour
 
                 rb.simulated = false;
 
-                // // if (player.transform.rotation.y != 0f)
-                // //    faceRight = -1;
-                // // else
-                // //     faceRight = 1;
-                // // hitVelo.x = faceRight * 20f;
-                // // rb.velocity = hitVelo;
-                // // rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                // if (isGravity)
-                // {
-                //     rb.velocity = hitVelo;
-                // }
                 player.GetComponent<ParticleSystem>().Play(false);
                 player.GetComponent<SpriteRenderer>().enabled = false;
             }
 
+            // Start to fade in the loading screen
             ls.FadeIn();
-            // player.GetComponent<PlatformerCharacter2D>().controls.Disable();
+
+            // Start a Coroutine for WaitForDeath, which waits for 1 second before reloading the level
             StartCoroutine(WaitForDeath());
         }
     }
@@ -78,6 +68,7 @@ public class Respawn : MonoBehaviour
     {        
         yield return new WaitForSeconds(1f);
         
+        // Load the same scene (restart the level)
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
