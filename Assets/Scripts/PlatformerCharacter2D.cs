@@ -167,11 +167,10 @@ public class PlatformerCharacter2D : MonoBehaviour
             canJumpMore = isJumping = isWallJumping = false;
         }
 
-        // If the player is gliding, constrain downward velocity and lower gravity
+        // TODO: If the player is gliding, constrain downward velocity and lower gravity
         if (isGliding)
         {
-            rb.gravityScale = gravity * parachuteMult;
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -10));
+            
         }
         else
         {
@@ -241,13 +240,12 @@ public class PlatformerCharacter2D : MonoBehaviour
                     }
                 }
             }
-            // If the player attempts to glide...
-            else if (hasGlider && !isGrounded && !isSliding)
+            // TODO: If the player attempts to glide... (Change false to something that would correspond to using the glider when pushing the jump button)
+            else if (false)
             {
                 isGliding = true;
 
-                // Prevent gliding upwards
-                rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, 0f));
+                // TODO: Prevent gliding upwards
             }
         }
     }
