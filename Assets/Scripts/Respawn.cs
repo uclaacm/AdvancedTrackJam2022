@@ -34,8 +34,8 @@ public class Respawn : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // If the collision's tag is "Player", disable its PlatformerCharacter2D component's controls and restart the level
-        if (collision.tag == "Player")
+        // TODO: If the collision's tag is "Player", disable its PlatformerCharacter2D component's controls and restart the level
+        if (false)
         {
             PlatformerCharacter2D script = player.GetComponent<PlatformerCharacter2D>();
             if (script != null)
@@ -44,7 +44,7 @@ public class Respawn : MonoBehaviour
                 script.controls.Disable();
             }
 
-            // Freeze Player if hit a spike (tag = "Lethal_Freeze")
+            // Freeze Player and play paticle effect if hit a spike (tag = "Lethal_Freeze")
             if (gameObject.tag == "Lethal_Freeze")
             {
                 cl.isTrigger = false;
@@ -59,16 +59,15 @@ public class Respawn : MonoBehaviour
             // Start to fade in the loading screen
             ls.FadeIn();
 
-            // Start a Coroutine for WaitForDeath, which waits for 1 second before reloading the level
-            StartCoroutine(WaitForDeath());
+            // TODO: Start a Coroutine for WaitForDeath, which waits for 1 second before reloading the level
         }
     }
 
     private IEnumerator WaitForDeath()
-    {        
-        yield return new WaitForSeconds(1f);
+    {
+        // TODO: Wait one second before continuing (try looking at the Unity docs for Coroutines)
+        yield return null;
         
-        // Load the same scene (restart the level)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // TODO: Load the same scene (restart the level)
     }
 }
