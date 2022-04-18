@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BoxCollider2D))]
 public class LevelGoal : MonoBehaviour
 {
-    [Tooltip("The build index of the next level's scene. These can be found/edited in Build Settings")]
+    [Tooltip("Number of the next level (starts at 0) (will be next level's scene's build index - 3)")]
     [SerializeField] private int nextLevelNumber;
 
     // Visualize what the goalzone looks like in the Editor (make sure Gizmos are enabled in the Scene view!)
