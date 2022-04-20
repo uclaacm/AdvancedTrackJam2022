@@ -8,7 +8,6 @@ public class Respawn : MonoBehaviour
 {
     private GameObject player;
     private Animator am;
-    // [SerializeField] private Transform spawnPoint;
     private Rigidbody2D rb;
     private BoxCollider2D cl;
     private LoadingScreen ls;
