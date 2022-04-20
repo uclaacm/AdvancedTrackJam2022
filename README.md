@@ -13,7 +13,7 @@ These are the "required" coding tasks that the skeleton code will walk you throu
 - Detect when the player is attempting to glide (pressing Jump button in midair)
 - Prevent gliding upwards
 ### Respawn.cs
-- Detect if the collision's tag is "player"
+- Detect if the collision's tag is "Player"
 - Start the WaitForDeath Coroutine, which waits for 1 second before reloading the level
   - Wait one second (try looking at the Unity docs for Coroutines)
   - Load the same scene (restart the level)
