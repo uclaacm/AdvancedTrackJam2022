@@ -8,13 +8,10 @@ public class Respawn : MonoBehaviour
 {
     private GameObject player;
     private Animator am;
-    // [SerializeField] private Transform spawnPoint;
     private Rigidbody2D rb;
     private BoxCollider2D cl;
     private LoadingScreen ls;
     private Vector2 hitVelo = new Vector2(0f, 40f);
-    // private int faceRight = 1;
-    private bool isGravity;
 
     private void Awake()
     {
@@ -40,7 +37,6 @@ public class Respawn : MonoBehaviour
             PlatformerCharacter2D script = player.GetComponent<PlatformerCharacter2D>();
             if (script != null)
             {
-                isGravity = true;
                 script.controls.Disable();
             }
 
