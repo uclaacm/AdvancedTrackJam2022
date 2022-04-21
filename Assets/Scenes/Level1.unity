@@ -1303,6 +1303,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1125326254, guid: c7a9b0614aa391b4ca7ea83be1156975, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c7a9b0614aa391b4ca7ea83be1156975, type: 3}
+--- !u!4 &668101105 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 586366251230067395, guid: c7a9b0614aa391b4ca7ea83be1156975,
+    type: 3}
+  m_PrefabInstance: {fileID: 668101104}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &762736423
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,6 +3786,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2697750950994132995, guid: 6cd5e0fd6a00ef84fb40a0f3108b4b38,
+        type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 668101105}
     - target: {fileID: 2711610741218099496, guid: 6cd5e0fd6a00ef84fb40a0f3108b4b38,
         type: 3}
       propertyPath: m_RootOrder
@@ -3857,22 +3868,22 @@ PrefabInstance:
     - target: {fileID: 4132508997030797148, guid: 24a48f37bae068d40ad93d50b53cb09a,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: -3.3050003
+      value: -3.305
       objectReference: {fileID: 0}
     - target: {fileID: 4132508997030797148, guid: 24a48f37bae068d40ad93d50b53cb09a,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
-      value: -0.60084563
+      value: -0.6008466
       objectReference: {fileID: 0}
     - target: {fileID: 4132508997030797148, guid: 24a48f37bae068d40ad93d50b53cb09a,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
-      value: -0.6949997
+      value: -0.69500065
       objectReference: {fileID: 0}
     - target: {fileID: 4132508997030797148, guid: 24a48f37bae068d40ad93d50b53cb09a,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
-      value: -3.3050003
+      value: -3.305
       objectReference: {fileID: 0}
     - target: {fileID: 4132508997030797149, guid: 24a48f37bae068d40ad93d50b53cb09a,
         type: 3}
