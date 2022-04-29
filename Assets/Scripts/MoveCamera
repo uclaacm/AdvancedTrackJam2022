@@ -1,0 +1,41 @@
+using UnityEngine;
+
+public class MoveCamera : MonoBehaviour
+{
+    // In the MoveCamera script, our goal is to make a smooth camera script.
+    // It will follow the player around but there will be some radius around the player where 
+    // the camera will not move. Think about how you want to define your focus point (represents center of screen)
+	// TODO: variable to store what object we want to focus at and the radius of the focus
+    // how do we want to represent the location?
+
+	void Awake()
+	{
+		//TODO: initialize focus point to current position of focus
+	}
+
+	void LateUpdate()
+	{
+		// after everything else has ran, we will move the camera (hence the late update)
+		UpdateFocusPoint();
+		//TODO: update the position of the camera to reflect the updated focus point.
+	}
+
+    //function to update the focus point
+	void UpdateFocusPoint()
+	{
+        //TODO: define and initialize variable for target point (where do we want the camera to go)
+		//if we have defined a focus radius > 0
+		if (focusRadius > 0f)
+		{
+            // TODO: check if the target is outside the radius
+            // TODO: if the target is outside the radius, we then want to move the focus point towards the target
+            // we will do this with Vector3.Lerp. Search for Lerp on the Unity documentation and try to figure out
+            // what each parameter should be. Remember we want our camera to move smoothly.
+		}
+		else
+		{
+			// if we don't have a radius, we will just set the focus point to the target
+			// TODO: set focus point to target point
+		}
+	}
+}
